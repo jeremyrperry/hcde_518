@@ -30,7 +30,12 @@ var isMobile = {
 };
 
 window.addEventListener("deviceorientation", function(e) {
-      $('#direction').html(degreeToDirection(degreeAdjust(e.alpha)));
+      $('#direction').html(degreeToDirection(degreeAdjust(e.alpha))+' ('+e.alpha+')');
+}, true);
+
+ window.addEventListener("compassneedscalibration", function(event) {
+      alert('Your compass needs calibrating! Wave your device in a figure-eight motion');
+      event.preventDefault();
 }, true);
 
 
