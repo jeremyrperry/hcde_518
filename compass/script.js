@@ -8,8 +8,29 @@ var info = {
 	prior: [],
 }
 
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 window.addEventListener("deviceorientation", function(e) {
-      $('#direction').html(degreeToDirection(360 - e.alpha));
+      $('#direction').html(degreeToDirection(degreeAdjust(e.alpha)));
 }, true);
 
 
@@ -20,6 +41,15 @@ function setGeo(){
    else{
       alert("Sorry, browser does not support geolocation!");
    }
+}
+
+function degreeAdjust(val){
+	if(isMobile.Android()){
+		292.5 - val;
+	}
+	else{
+		return 360 - val;
+	}
 }
 
 function roundIt(num, pos){
