@@ -30,7 +30,7 @@ var isMobile = {
 };
 
 window.addEventListener("deviceorientation", function(e) {
-      $('#direction').html(degreeToDirection(degreeAdjust(e.alpha))+' ('+e.alpha+')');
+      $('#direction').html(degreeToDirection(degreeAdjust(e.alpha)));
 }, true);
 
  window.addEventListener("compassneedscalibration", function(event) {
@@ -50,7 +50,7 @@ function setGeo(){
 
 function degreeAdjust(val){
 	if(isMobile.Android()){
-		return 292.5 - val;
+		return 275 - val;
 	}
 	else{
 		return 360 - val;
