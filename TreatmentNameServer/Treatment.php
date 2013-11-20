@@ -87,8 +87,15 @@
     $search = trim(strtolower($search));
     //search in Trie
     $result = $trie->prefixSearch((string)$search);
-    var_dump($result);
+    //var_dump($result);
     //return result
-    echo json_encode($result);
-
+    //$result = var_dump($result);
+    $response = array();
+    if($result != FALSE){
+    while ( ($name = current($result)) !== FALSE ) {
+        array_push($response,key($result));
+        next($result);
+    }}
+    
+    echo json_encode($response);
 ?>
