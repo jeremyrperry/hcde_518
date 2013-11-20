@@ -1,43 +1,33 @@
-# AWS SDK for PHP Sample Project
+# AWS HealthApp BackEnd
 
-A simple PHP application illustrating usage of the AWS SDK for PHP.
+A set of simple PHP scripts to get results in JSON format from AWS DynamoDB
 
-## Requirements
+Current PublicDNS = ec2-54-201-100-91.us-west-2.compute.amazonaws.com
+Current PublicIP = 54.201.100.91
 
-A `composer.json` file declaring the dependency on the AWS SDK is provided. To
-install Composer and the SDK, run:
+## To query for Treatment 
 
-    curl -sS https://getcomposer.org/installer | php
-    php composer.phar install
+	RootURL?Treatment=ID
+	
+Example:	
+	
+	RootURL?Treatment=BoneScan
+	
+## To get details About Doctors and Facilities
 
-## Basic Configuration
+	RootURL?About=ID
+	
+Example:
+	
+	RootURL?About=RohitKumar
+	RootURL?About=MayoClinic
 
-You need to set your AWS security credentials before the sample is able to
-connect to AWS. The SDK will automatically pick up credentials in environment
-variables:
+## To get Reviews
 
-    export AWS_ACCESS_KEY_ID="your-aws-access-key-id"
-    export AWS_SECRET_KEY="your-aws-secret-access-key"
+	RootURL?Review=ReviewID
+	
+Example:
 
-See the [Security Credentials](http://aws.amazon.com/security-credentials) page
-for more information on getting your keys. You can also set your credentials in
-a couple of other ways. See the [AWS SDK for PHP documentation](http://docs.aws.amazon.com/aws-sdk-php-2/guide/latest/configuration.html)
-for more information.
-
-## Running the S3 sample
-
-This sample application connects to Amazon's [Simple Storage Service (S3)](http://aws.amazon.com/s3),
-creates a bucket, and uploads a file to that bucket. The sample code will
-generate a bucket name and a file for you, so all you need to do is run the
-code:
-
-    php sample.php
-
-The S3 documentation has a good overview of the [restrictions for bucket names](http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html)
-for when you start making your own buckets.
-
-## License
-
-This sample application is distributed under the
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-
+	RootURL?Review=Review1
+	
+Note: Replace RootURL with current PublicDNS or PublicIP
