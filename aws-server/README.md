@@ -3,31 +3,27 @@
 A set of simple PHP scripts to get results in JSON format from AWS DynamoDB
 
 Current PublicDNS = ec2-54-201-100-91.us-west-2.compute.amazonaws.com
+
 Current PublicIP = 54.201.100.91
 
-## To query for Treatment 
-
-	RootURL?Treatment=ID
+## To query for Treatment
 	
 Example:	
 	
-	RootURL?Treatment=BoneScan
+	http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/Treatment.php?searchKey=BoneScan
 	
 ## To get details About Doctors and Facilities
-
-	RootURL?About=ID
 	
 Example:
-	
-	RootURL?About=RohitKumar
-	RootURL?About=MayoClinic
+
+Facility:
+	http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=MayoClinic
+
+Doctor:
+	http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=RohitKumar
 
 ## To get Reviews
-
-	RootURL?Review=ReviewID
 	
 Example:
 
-	RootURL?Review=Review1
-	
-Note: Replace RootURL with current PublicDNS or PublicIP
+	http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/Review.php?searchKey=Review1
