@@ -1,0 +1,161 @@
+body{
+	margin:0;
+	padding:0;
+}
+#app{
+	width: 320px;
+	height: 416px;
+	border-radius: 5px;
+	background-color: #00FFFF;
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0px;
+}
+#user_info{
+	float: right;
+	margin-right: 10px;
+	position: relative;
+	display: none;
+	z-index: 10000;
+}
+#app input[type=text], #app input[type=password], #app input[type=email], #app input[type=date]{
+	width: 280px;
+	height: 14px;
+	font-size: 12px;
+	border-radius:5px;
+	padding: 5px;
+}
+#app input[type=submit], #app input[type=button]{
+	width: 100px;
+	font-size: 16px;
+	height: 14px;
+}
+#review_comments{
+	width: 280px;
+	height: 115px;
+}
+section{
+	display: none;
+	position: relative;
+	margin: 0px 20px 0px 20px;
+	top: 20px;
+}
+#splash_page{
+	display:block;
+	text-align: center;
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+}
+section h2{
+	margin-top: 0px;
+}
+.display_reviews .review, .display_reviews .header{
+	margin-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+.display_reviews .review div{
+	display: inline-block;
+	vertical-align: top;
+}
+.review_body{
+	margin-left: 20px;
+}
+.results_list .search_results_row{
+	border: 1px solid black;
+	border-radius: 2px;
+}
+.results_list .search_result_row :hover{
+	cursor: pointer;
+}
+#search #expanded_search{
+	display: none;
+}
+#treatment_banner{
+	border: 1px solid black;
+	max-height: 155px;
+	max-width: 280px;
+	margin-bottom: 20px;
+}
+#treatment_banner .heading{
+	background-color: rgba(255,255,255,0.9);
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	width: 100%;
+}
+
+#distance_type {
+height: 29px;
+width: 30%;
+background-color: gray;
+display: inline-block;
+border-radius: 5px;
+position: absolute;
+border-top-right-radius: 25px;
+border-bottom-right-radius: 25px;
+font-size: 17px;
+font-weight: bold;
+}
+#distance{
+	margin-left: 72px;
+}s
+#search_form_search{
+	margin-top: 20px;
+}
+.no_results{
+	margin-top: 20px;
+	height: 280px;
+	width: 280px;
+	background-color: rgba(0,0,0,0.5);
+}
+#map{
+	height: 280px;
+	width: 280px;
+}
+#review_main div{
+	display: inline-block;
+	margin-right: 20px;
+}
+#review_main div:hover{
+	cursor: pointer;
+}
+#choose_doctor{
+	background: url(../images/doctor_bg.jpg) left no-repeat;
+	width: 75px;
+	height: 105px;
+}
+#choose_facility{
+	background: url(../images/facility_bg.jpg) left no-repeat;
+	width: 75px;
+	height: 105px;
+}
+.review_div{
+	display: none;
+}
+#review_div_1{
+	display:block;
+}
+#review_div_3 .overall{
+	float: right;
+}
+footer{
+	height: 50px;
+	background-color: rgba(255,255,255,0.9);
+	position:absolute;
+	bottom:0px;
+	width: 100%;
+	display: none;
+}
+
+footer div{
+	display: inline-block;
+	width: 23.5%;
+	height: 100%;
+	text-align: center;
+	border: 1px solid black;
+}
+
+footer div:hover{
+	cursor: pointer;
+}
