@@ -105,9 +105,13 @@ $response = $client->updateItem(array(
 ));
 
 }
+else{
+echo "Wrong parameters";
+echo $value.$quality.$cost.$to.$from.$review;
+}
 
 
-//print_r ($response['Items']);
+print_r ($response['Items']);
 //echo json_encode($response['Items']);
 
 ?>
