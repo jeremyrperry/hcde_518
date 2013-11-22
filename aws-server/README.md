@@ -9,17 +9,17 @@ Current PublicIP = http://54.201.100.91
 ## To query for Treatment
 	
 Example:
-http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/Treatment.php?searchKey=BoneScan
+http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/Treatment.php?searchKey=Bone%20Scan
 	
 ## To get details About Doctors and Facilities
 	
 Example:
 
 Facility:
-http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=MayoClinic
+http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=Mayo%20Clinic
 
 Doctor:
-http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=RohitKumar
+http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?searchKey=Rohit%20Kumar
 
 ## To get Reviews
 	
