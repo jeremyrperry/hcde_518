@@ -25,3 +25,8 @@ http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/About.php?se
 	
 Example:
 http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/Review.php?searchKey=Review1
+
+## TO add Reviews
+
+Example:
+http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/AddReview.php?to=Ben%20Kim&from=User1&value=3&quality=4&cost=4&review=he%20is%20good
