@@ -103,7 +103,7 @@ $response = $client->updateItem(array(
             )        
 	)
 ));
-
+echo "Done!";
 }
 else{
 echo "Wrong parameters";
@@ -112,6 +112,6 @@ echo $value.$quality.$cost.$to.$from.$review;
 
 
 //print_r ($response['Items']);
-echo "Done!";
-echo "<br> <a href=\"About.html?searchKey=".$to."\" >Go back to ".$to."</a";
+
+echo "<br> <a href=\"about.html?searchKey=".$to."\" >Go back to ".$to."</a";
 ?>
