@@ -270,13 +270,14 @@ var revealCare = {
         });
         $(window).on('hashchange', function(){
             var dest = window.location.hash;
-            if((dest== '#facility_review_1' || '#facility_review_2') && !revealCare.loggedIn){
-                $('#'+dest).find('.redirect').val(dest);
+            console.log(dest);
+            if((dest == '#facility_review_1' || dest == '#facility_review_2') && !revealCare.loggedIn){
+                $(dest).find('.redirect').val(dest);
                 dest = '#login';
             }
-            $(window.location.hash).show();
+            $(dest).show();
             $(revealCare.currentSection).hide();
-            revealCare.currentSection = window.location.hash;
+            revealCare.currentSection = dest;
         });
     },
 
