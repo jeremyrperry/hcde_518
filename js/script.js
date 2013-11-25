@@ -161,7 +161,7 @@ var revealCare = {
         });
         $('.link').click(function(){
             var dest = $(this).attr('id').replace('_div', '');
-            window.location.hash = type;
+            window.location.hash = dest;
         });
 
         /*
