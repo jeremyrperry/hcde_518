@@ -160,8 +160,7 @@ var revealCare = {
             $(this).closest('form').find('input[type="text"]').val('');
         });
         $('.link').click(function(){
-            var type = $(this).attr('id').replace('_div', '');
-            console.log(type);
+            var dest = $(this).attr('id').replace('_div', '');
             window.location.hash = type;
         });
 
@@ -270,7 +269,11 @@ var revealCare = {
             window.location.hash = 'display_reviews_doctor';
         });
         $(window).on('hashchange', function(){
-            console.log(window.location.hash);
+            var dest = window.location.hash;
+            if((dest== '#facility_review_1' || '#facility_review_2') && !revealCare.loggedIn){
+                $('#'+dest).find('.redirect').val(dest);
+                dest = '#login';
+            }
             $(window.location.hash).show();
             $(revealCare.currentSection).hide();
             revealCare.currentSection = window.location.hash;
