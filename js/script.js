@@ -205,7 +205,7 @@ var revealCare = {
             }
         });
         $('#login_link').click(function(){
-            alert('in function');
+            //alert('in function');
             if(revealCare.loggedIn){
                 revealCare.logout();
             }
