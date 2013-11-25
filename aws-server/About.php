@@ -10,7 +10,7 @@ use Aws\DynamoDb\Enum\Type;
 // Instantiate the client with your AWS credentials
 $aws = Aws\Common\Aws::factory('./config.php');
 $client = $aws->get("dynamodb");
-//$fourteenDaysAgo = date("Y-m-d H:i:s", strtotime("-14 days"));
+
 
 if (isset($argv))
     $searchKey = $argv[1];

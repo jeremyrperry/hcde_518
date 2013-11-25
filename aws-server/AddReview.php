@@ -111,7 +111,7 @@ echo $value.$quality.$cost.$to.$from.$review;
 }
 
 
-print_r ($response['Items']);
-//echo json_encode($response['Items']);
-
+//print_r ($response['Items']);
+echo "Done!";
+echo "<br> <a href=\"About.html?searchKey=".$to."\" >Go back to ".$to."</a";
 ?>
