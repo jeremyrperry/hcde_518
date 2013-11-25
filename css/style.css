@@ -136,6 +136,25 @@ section div{
 	background: url(../images/treatment_list.jpg) left no-repeat;
 }
 
+#treatment_search_results div{
+	height: 55px;
+	width: 100%;
+}
+
+#treatment_search_results div:hover{
+	cursor:pointer;
+}
+
+#treatment_search_results .acl{
+	top: 122px;
+}
+#treatment_search_results .pcl{
+	top: 175px;
+}
+#treatment_search_results .meniscus{
+	top: 228px;
+}
+
 #search_results_map{
 	background: url(../images/doctor_search_results.jpg) left no-repeat;
 }

@@ -254,6 +254,10 @@ var revealCare = {
         $('.no_results').click(function(){
             history.back();
         });
+        $('#treatment_search_results div').click(function(){
+            revealCare.resultsMap($(this).attr('class'));
+            window.location.hash = 'search_results_map';
+        });
         $('#use_current_loc').click(function(){
             if($(this).is(':checked')){
                 $('#expanded_search').hide();
