@@ -172,7 +172,7 @@ var revealCare = {
             var type = $(this).attr('id').replace('_form', '');
             var have =  {
                 'treatment': new Array('acl', 'mcl', 'meniscus'),
-                'doctor': new Array('judity lindsay', 'thomas green', 'silvia jordan', 'joe smith'),
+                'doctor': new Array('judith lindsay', 'thomas green', 'silvia jordan', 'joe smith'),
                 'facility': new Array('harborview medical', 'group health', 'emanuel hospital', 'legacy good sam'),
             };
             var query = $(this).find(".search_field").val().toLowerCase();
