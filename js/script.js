@@ -20,43 +20,15 @@ function changeOrientation(){
 */
 
 var revealCare = {
-    currentSection: '#splash_page',
+    currentSection: '#home',
     geocoder: null,
     loggedIn: false,
     mapSet: false,
     searchInfo: [],
     reviewData: [],
     userInfo: [],
-    testInfo: {
-        'lat': '47.619591',
-        'lng': '-122.317837',
-        'username': 'hcde518',
-        'password': 'blowfish',
-        'email': 'hcde518@uw.edu',
-        'doctors':{
-            'name': 'Sara Smith',
-            'hospital': 'UW Medical Center',
-        },
-        'facilities': {
-            0: {
-                'name': 'UW Medical Center - $800',
-                'address': '1959 NE Pacific St, Seattle, WA 98195',
-            },
-            1: {
-                'name': 'Swedish Medical Center - Ballard - $1200',
-                'address': '5300 Tallman Ave NW, Seattle, Washington 98107',
-            },
-            2: {
-                'name': 'Group Health - Capitol Hill - $950',
-                'address': '201 16th Ave E, Seattle, WA 98112',
-            },
-            3: {
-                'name': 'Harborview Medical Center - $750',
-                'address': '325 9th Ave, Seattle, WA 98104',
-            },
-        }
-    },
     webServiceUrl: 'http://phad.phluant.net',
+    reviewUrl: ' http://ec2-54-201-100-91.us-west-2.compute.amazonaws.com/aws-server/',
 
     capitalize: function(str){
         return str.charAt(0).toUpperCase()+str.slice(1);
@@ -73,32 +45,13 @@ var revealCare = {
     },
 
     checkLogin: function(){
-        var username = this.checkCookie('username');
-        if(username){
-            var html = '<a href="#logout" class="logout_link">Logout</a>';
-            $('#user_info').html(html);
+        var email = this.checkCookie('email');
+        if(email){
+            $('#login_link').attr('class', 'logout');
+            $('#login_link').html('Logout');
+            $('#username').html(email);
             this.loggedIn = true;
-            $('.logout_link').unbind('click');
-            $('.logout_link').bind('click', function(a){
-                a.preventDefault();
-                revealCare.logout();
-                alert('logging out');
-                window.location.hash = 'search';
-            });
         }
-    },
-
-    exitSplash: function(){
-        console.log('in exit splash');
-        //$('#city_state').attr('placeholder', this.userInfo.city+', '+this.userInfo.state);
-        //$('#zip').attr('placeholder', this.userInfo.zip);
-        setTimeout(function(){
-            window.location.hash = 'search';
-            $('#user_info').show();
-            console.log('past hash change');
-            $('footer').show();
-            
-        },3000);
     },
 
     getCookie: function(c_name){
@@ -128,6 +81,7 @@ var revealCare = {
     getLocation: function(){
         var address = this.userInfo.lat+','+this.userInfo.lng;
         console.log(address);
+        /*
         this.geocoder.geocode( { 'address': address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 var googleAddress = results[0].formatted_address.split(',');
@@ -136,18 +90,17 @@ var revealCare = {
                 revealCare.userInfo.state = $.trim(stateZip[0]);
                 revealCare.userInfo.zip = $.trim(stateZip[1]);
                  console.log("Google intended address: "+revealCare.userInfo.city+','+revealCare.userInfo.state+','+revealCare.userInfo.zip);
-                revealCare.exitSplash();
             }
             else{
+            */
                 $.get(revealCare.webServiceUrl+'/web_services/geolocation/export?type=city_postal_by_geo&value='+address, function(d){
                     var data = jQuery.parseJSON(d);
                     revealCare.userInfo.city = data.results.city;
                     revealCare.userInfo.state = data.results.state_region;
                     revealCare.userInfo.zip = data.results.postal_code;
-                    revealCare.exitSplash();
                 });
-            }
-        });
+            //}
+        //});
     },
 
     init: function(){
@@ -157,7 +110,7 @@ var revealCare = {
           window.location = loc.substring(0, index);
         }
         this.checkLogin();
-        this.geocoder = new google.maps.Geocoder();
+        //this.geocoder = new google.maps.Geocoder();
         navigator.geolocation.getCurrentPosition(function(position){
             revealCare.userInfo.lat = position.coords.latitude;
             revealCare.userInfo.lng = position.coords.longitude;
@@ -189,125 +142,114 @@ var revealCare = {
                 $(this).html('Miles');
             }
         });
-        $('#login_form').submit(function(f){
+        $('#login_form, #reg_from').submit(function(f){
             f.preventDefault();
             revealCare.loggedIn = true;
-            revealCare.setCookie('username', $('#user_email_login').val(), 14);
+            $(this).find('input').each(function(){
+                revealCare.userInfo[$(this).attr('name')] = $(this).val();
+            });
+            revealCare.setCookie('email', $(this).find('.email').val(), 14);
             revealCare.checkLogin();
-            var dest = $('#redirect_login').val();
+            var dest = $(this).find('.redirect').val();
             window.location = dest;
         });
-        $('.search').click(function(){
-            var type = $(this).attr('id').replace('_search', '');
-            if(type == 'treatments'){
-                $('#treatment_banner').show();
-            }
-            else{
-                $('#treatment_banner').hide();
-            }
-            $('#search_form').removeAttr('class');
-            $('#search_form').addClass(type);
-            $('#search').find('#search_field').attr('placeholder', 'Search '+revealCare.capitalize(type));
-            window.location.hash = 'search';
+        $('form .submit').click(function(){
+            $(this).closest('form').trigger('submit');
         });
-        $('#search_form').submit(function(f){
+        $('form .clear').click(function(){
+            $(this).closest('form').find('input[type="text"]').val('');
+        });
+        $('.link').click(function(){
+            var type = $(this).attr('id').replace('_div', '');
+            console.log(type);
+            window.location.hash = type;
+        });
+
+        /*
+        
+        */
+        $('.search_form').submit(function(f){
             f.preventDefault();
-            var searchType = $(this).attr('class');
-            var destSection = 'review_search_map';
-            if($('#search_field').val() == 'nada'){
-                destSection = 'review_search_no_results';
-            }
-            if($('#search_field').val() == 'dunno'){
-                destSection = 'review_treatment_results_list';
-            }
-            if($('#search_field').val() == 'radius'){
-                destSection = 'review_search_no_radius';
-            }
-            else{
-                if(!revealCare.mapSet){
-                    revealCare.setMap();
-                    revealCare.mapSet = true;
+            var type = $(this).attr('id').replace('_form', '');
+            var have =  {
+                'treatment': new Array('acl', 'mcl', 'meniscus'),
+                'doctor': new Array('judity lindsay', 'thomas green', 'silvia jordan', 'joe smith'),
+                'facility': new Array('harborview medical', 'group health', 'emanuel hospital', 'legacy good sam'),
+            };
+            var query = $(this).find(".search_field").val().toLowerCase();
+            var proceed = false;
+            proceedTo = 'search_results_map';
+            console.log(type);
+            if(have[type].indexOf(query) != -1){
+                console.log('proceeding');
+                if(type == 'treatment'){
+                    type = query;
                 }
-            }
-            //$(this).reset();
-            window.location.hash = destSection;
-        });
-        $('#leave_review').click(function(){
-            window.location.hash = 'review_main';
-        });
-        $('.login_link').bind('click', function(a){
-            a.preventDefault();
-            if(revealCare.loggedIn){
-                alert('You are already logged in.');
-                return false;
+                proceed = true;
             }
             else{
-                $('#redirect_login').val(window.location.hash);
-                window.location = $(this).attr('href');
+                var c = confirm('Nothing found for your query.  Would you like to see available results?');
+                if(c){
+                    proceed = true;
+                    if(type == 'treatment'){
+                        proceedTo = 'treatment_search_results';
+                    }
+                }               
             }
-        });
-        $('.reg_link').bind('click', function(a){
-            a.preventDefault();
-            if(revealCare.loggedIn){
-                alert('You are already logged in.');
-                return false;
+            if(proceed){
+                revealCare.resultsMap(type);
+                window.location.hash = proceedTo;
             }
             else{
-                $('#redirect_reg').val($('#recirect_login').val());
-                window.location = $(this).attr('href');
+                return false;
             }
-            
         });
-        $('#review_main div').click(function(){
-            if(!revealCare.loggedIn){
-                $('#redirect_login').val(window.location.hash);
+        $('#login_link').click(function(){
+            alert('in function');
+            if(revealCare.loggedIn){
+                revealCare.logout();
+            }
+            else{
                 window.location.hash = 'login';
             }
-            else{
-                window.location.hash = 'review_submit';
-            }
         });
+        /*
         $('.review_back').click(function(){
             var backTo = $(this).closest('form').attr('id').replace('review_form_', '');
             backTo--;
             $(this).closest('div').hide();
             $('#review_div_'+backTo).show();
         });
-        $('#review_form_1').submit(function(f){
+        */
+        $('.review_form_1').submit(function(f){
             f.preventDefault();
-            $(this).find('input[type="text"], input[type="date"]').each(function(){
-                revealCare.reviewData[$(this).attr('id')] = $(this).val();
+            var overall = 0;
+            revealCare.reviewData['date'] = $(this).find('input[type="date"]').val();
+            $(this).find('input[type="radio"]:checked').each(function(){
+                console.log($(this).attr('name'));
+                console.log($(this).val());
+                revealCare.reviewData[$(this).attr('name')] = $(this).val();
+                overall = eval(overall+'+'+$(this).val());
+                console.log(overall);
             });
-            $('#review_div_2').show();
-            $('#review_div_1').hide();
+            console.log('done adding');
+            console.log(overall);
+            overall = overall/4;
+            console.log(overall);
+            revealCare.reviewData['overall'] = Math.round(overall * 10) / 10;
+            var next = $(this).closest('section').attr('id').replace('1', '2');
+            $('#'+next).find('.overall').html(overall);
+            window.location.hash = next;
         });
-        $('#review_form_2').submit(function(f){
+        $('.review_form_2').submit(function(f){
             f.preventDefault();
-            $(this).find('input[type="radio"]').each(function(){
-                if($(this).attr('checked')){
-                    revealCare.reviewData[$(this).attr('name').replace('review_', '')] = $(this).val();
-                }
-            });
+            revealCare.reviewData['comments'] = $(this).find('.comments').val();
             console.log(revealCare.reviewData);
-            for(var i in revealCare.reviewData){
-                if(i != 'review_date' || 'review_tq'){
-                    console.log(i);
-                    $('#review_div_3').find('.'+i).html(revealCare.reviewData[i]);
-                }
-            }
-            $('#review_div_3').show();
-            $('#review_div_2').hide();
+            var next = $(this).closest('section').attr('id').replace('2', 'thanks');
+            window.location.hash = next;
         });
-        $('#review_form_3').submit(function(f){
-            f.preventDefault();
-            revealCare.reviewData['comments'] = $('#review_comments').val();
-            alert('Thank you!');
-            window.location.hash = 'search';
-           $('#review_div_3').hide();
-           $('#review_div_1').show();
-           $('#review_form_1').reset();
-           $('#review_form_2').reset();
-           $(this).reset();
+        $('.review_thanks div').click(function(){
+            window.location.hash = 'home';
         });
         $('.no_results').click(function(){
             history.back();
@@ -324,6 +266,7 @@ var revealCare = {
             window.location.hash = 'display_reviews_doctor';
         });
         $(window).on('hashchange', function(){
+            console.log(window.location.hash);
             $(window.location.hash).show();
             $(revealCare.currentSection).hide();
             revealCare.currentSection = window.location.hash;
@@ -332,9 +275,16 @@ var revealCare = {
 
     logout: function(){
         this.loggedIn = false;
-        this.setCookie('username', '', -1);
-        var html = '<a href="#login" class="login_link">Login</a>';
-        $('#user_info').html(html);
+        this.setCookie('email', '', -1);
+        $('#login_link').attr('class', 'login');
+        $('#login_link').html('Login');
+        $('#username').html('');
+
+    },
+
+    resultsMap: function(newClass){
+        $('#search_results_map').attr('class', newClass);
+        $('#search_results_map').css('background', 'url(images/'+newClass+'_search_results.jpg) left no-repeat');
     },
 
     setCookie: function(name, value, days){

@@ -4,33 +4,61 @@ body{
 }
 #app{
 	width: 320px;
-	height: 416px;
+	height: 548px;
 	border-radius: 5px;
-	background-color: #00FFFF;
+	background-color: rgb(171,240,255);
 	position: relative;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:0px;
 }
 #user_info{
-	float: right;
-	margin-right: 10px;
-	position: relative;
-	display: none;
+	top:20px;
+	height: 34px;
+	width: 100%;
+	position: absolute;
+}
+#user_info div{
+	width: 60px;
+	height: 100%;
+	position: absolute;
 	z-index: 10000;
+	background-color: white;
+	color: black;
 }
-#app input[type=text], #app input[type=password], #app input[type=email], #app input[type=date]{
-	width: 280px;
-	height: 14px;
+#user_info #username{
+	left: 0px;
+	font-size: 9px;
+}
+#user_info #login_link{
+	right: 0px;
+}
+form input[type=text], form input[type=password], form input[type=email], form input[type=date]{
+	width: 181px;
+	height: 16px;
 	font-size: 12px;
-	border-radius:5px;
 	padding: 5px;
+	border:none;
 }
-#app input[type=submit], #app input[type=button]{
+form input[type=checkbox]{
+	height: 40px;
+	width: 40px;
+}
+form input[type=submit], form input[type=button]{
 	width: 100px;
 	font-size: 16px;
 	height: 14px;
 }
+
+form .submit, form .clear{
+	height: 27px;
+	width: 27px;
+	display: inline-block;
+}
+form .submit:hover, form .clear:hover{
+	cursor: pointer;
+}
+
 #review_comments{
 	width: 280px;
 	height: 115px;
@@ -38,122 +66,288 @@ body{
 section{
 	display: none;
 	position: relative;
-	margin: 0px 20px 0px 20px;
-	top: 20px;
-}
-#splash_page{
-	display:block;
-	text-align: center;
-	border-top: 5px solid black;
-	border-bottom: 5px solid black;
-}
-section h2{
-	margin-top: 0px;
-}
-.display_reviews .review, .display_reviews .header{
-	margin-bottom: 10px;
-	border-bottom: 1px solid black;
-}
-.display_reviews .review div{
-	display: inline-block;
-	vertical-align: top;
-}
-.review_body{
-	margin-left: 20px;
-}
-.results_list .search_results_row{
-	border: 1px solid black;
-	border-radius: 2px;
-}
-.results_list .search_result_row :hover{
-	cursor: pointer;
-}
-#search #expanded_search{
-	display: none;
-}
-#treatment_banner{
-	border: 1px solid black;
-	max-height: 155px;
-	max-width: 280px;
-	margin-bottom: 20px;
-}
-#treatment_banner .heading{
-	background-color: rgba(255,255,255,0.9);
-	text-align: center;
-	font-size: 24px;
-	font-weight: bold;
+	height: 100%;
 	width: 100%;
+	margin-top: -20px;
+}
+section div{
+	position: absolute;
 }
 
-#distance_type {
-height: 29px;
-width: 30%;
-background-color: gray;
-display: inline-block;
-border-radius: 5px;
-position: absolute;
-border-top-right-radius: 25px;
-border-bottom-right-radius: 25px;
-font-size: 17px;
-font-weight: bold;
+#home{
+	display:block;
+	background: url(../images/home.jpg) left no-repeat;
 }
-#distance{
-	margin-left: 72px;
-}s
-#search_form_search{
-	margin-top: 20px;
+#home .content{
+	top: 306px;
+	margin-left: 30px;
 }
-.no_results{
-	margin-top: 20px;
-	height: 280px;
-	width: 280px;
-	background-color: rgba(0,0,0,0.5);
+#home .search_field{
+	margin-left: 35px;
 }
-#map{
-	height: 280px;
-	width: 280px;
+#home .submit{
+	margin-left: 10px;
 }
+#home #current_loc_block{
+	background-color: rgb(171,240,255);
+	margin-left: 204px;
+	margin-top: 9px;
+	height: 43px;
+	width: 61px;
+	z-index: 10000;
+}
+#home #current_loc{
+	margin-top: 1px;
+}
+
+
+#doctor_search{
+	background: url(../images/doctor_search_start.jpg) left no-repeat;
+}
+#doctor_search .content{
+	top: 128px;
+	margin-left: 2px;
+}
+#doctor_search .search_field{
+	margin-left: 35px;
+	width: 240px;
+}
+#doctor_search .submit{
+	margin-left: 10px;
+}
+
+
+#facility_search{
+	background: url(../images/facility_search_start.jpg) left no-repeat;
+}
+#facility_search .content{
+	top: 128px;
+	margin-left: 2px;
+}
+#facility_search .search_field{
+	margin-left: 35px;
+	width: 240px;
+}
+#facility_search .submit{
+	margin-left: 10px;
+}
+
+#treatment_search_results{
+	background: url(../images/treatment_list.jpg) left no-repeat;
+}
+
+#search_results_map{
+	background: url(../images/doctor_search_results.jpg) left no-repeat;
+}
+
+#facility_search_results_map{
+	background: url(../images/facility_search_results.jpg) left no-repeat;
+}
+
+#review_main{
+	background: url(../images/leave_review.jpg) left no-repeat;
+}
+
 #review_main div{
-	display: inline-block;
-	margin-right: 20px;
+	position: absolute;
+	height: 56px;
+	width: 56px;
+	top: 193px;
 }
 #review_main div:hover{
 	cursor: pointer;
 }
-#choose_doctor{
-	background: url(../images/doctor_bg.jpg) left no-repeat;
-	width: 75px;
-	height: 105px;
+
+#review_main #doctor_review_1_div{
+	left: 176px;
 }
-#choose_facility{
-	background: url(../images/facility_bg.jpg) left no-repeat;
-	width: 75px;
-	height: 105px;
+
+#review_main #facility_review_1_div{
+	left: 88px;
 }
-.review_div{
-	display: none;
+
+#doctor_review_1{
+	background: url(../images/doctor_review_1.jpg) left no-repeat;
 }
-#review_div_1{
-	display:block;
+
+#doctor_review_2{
+	background: url(../images/doctor_review_2.jpg) left no-repeat;
 }
-#review_div_3 .overall{
-	float: right;
+
+#facility_review_1{
+	background: url(../images/facility_review_1.jpg) left no-repeat;
 }
+
+#facility_review_2{
+	background: url(../images/facility_review_2.jpg) left no-repeat;
+}
+
+.review_1 .buttons{
+	left:150px;
+}
+
+.review_1 .buttons input[type=radio]{
+	margin-top: 2px;
+	margin-right: 4px;
+	height:20px;
+	width:20px;
+}
+
+.review_1 input[type=date]{
+	width: 300px;
+}
+.review_1 .date_field{
+	top: 126px;
+	position: absolute;
+	left:5px;
+}
+
+
+.review_1 .quality{
+	top: 204px;
+}
+
+.review_1 .knowledge, .review_1 .cleanliness{
+	top: 260px;
+}
+
+.review_1 .satisfaction, .review_1 .safety{
+	top: 317px;
+}
+
+.review_1 .service, .review_1 .expertise{
+	top: 372px;
+}
+
+.review_1 .submit{
+	top: 427px;
+	right: 21px;
+	height: 31px;
+	width: 91px;
+}
+
+.review_2 .overall{
+	top: 140px;
+	right: 22px;
+	height: 52px;
+	width: 86px;
+	background-color: white;
+}
+
+.review_2 .comments{
+	top: 205px;
+	left: 20px;
+	height: 158px;
+	width: 270px;
+	resize: none;
+	position: absolute;
+}
+
+.review_2 .submit{
+	top: 386px;
+	right: 21px;
+	height: 31px;
+	width: 91px;
+}
+
+#doctor_review_thanks{
+	background: url(../images/doctor_1.jpg) left no-repeat;
+}
+
+#facility_review_thanks{
+	background: url(../images/facility_review_thanks.jpg) left no-repeat;
+}
+.review_thanks div{
+	top: 295px;
+	left: 24px;
+	width: 277px;
+	height: 35px;
+}
+
+.review_thanks div:hover{
+	cursor: pointer;
+}
+
+#login{
+	background: url(../images/login.jpg) left no-repeat;
+}
+
+#login #login_div{
+	top: 112px;
+	margin-left: 32px;
+}
+
+#login .email, #login .password{
+	height: 20px;
+	width: 245px;
+}
+
+#login .password{
+	margin-top:10px;
+}
+
+#login .submit{
+	background: url(../images/login_btn.jpg) left no-repeat;
+	width: 80px;
+	height: 28px;
+	top: 84px;
+}
+
+#login .register{
+	background: url(../images/register_btn.jpg) left no-repeat;
+	width: 121px;
+	height: 29px;
+	top: 120px;
+}
+
+#register{
+	background: url(../images/register.jpg) left no-repeat;
+}
+
+#register #register_div{
+	top: 100px;
+	left:32px;
+	padding-top: 20px;
+}
+
+#register .login{
+	right: 32px;
+	height: 26px;
+	width: 79px;
+	top: 75px;
+}
+
+#register .login:hover{
+	cursor: pointer;
+}
+
+#register input{
+	height: 20px;
+	width: 245px;
+	margin-bottom: 7px;
+}
+#register .submit{
+	right: 31px;
+	height: 30px;
+	width: 119px;
+	top: 243px;
+}
+
+
 footer{
-	height: 50px;
-	background-color: rgba(255,255,255,0.9);
+	height: 83px;
 	position:absolute;
 	bottom:0px;
 	width: 100%;
-	display: none;
+	padding-left: 32px;
 }
 
 footer div{
 	display: inline-block;
-	width: 23.5%;
-	height: 100%;
-	text-align: center;
-	border: 1px solid black;
+	width: 48px;
+	height: 48px;
+	margin-top: 17px;
+	margin-right: 20px;
 }
 
 footer div:hover{
