@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 		$("#rating").append(arr[0]['Rating']['N']+"<br>");
 
-		var insert = "<a href=\"AddReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
+		var insert = "<a href=\"addReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
 		
 		$("#addReview").append(insert);	
 		console.log(arr[0]['Reviews']['SS'].length);
