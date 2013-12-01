@@ -5,7 +5,9 @@
 	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title>RevealCare</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 	<script src="js/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC83uUhHCl_0zza5YFNYaBKBeVojsqGaOc&sensor=false"></script>-->
 	<script src="js/script.js"></script>
 </head>
@@ -28,16 +30,49 @@
 	<section id="doctor_search" >
 		<div class="content">
 			<form id="doctor_form" class="search_form" action="" method="get">
-				<div class="submit"></div><input type="text" name="search_field" class="search_field" placeholder="Search Doctors" /><div class="clear"></div>
+				<div class="submit"></div><input id="doctor_search_id" type="text" name="search_field" class="search_field" placeholder="Search Doctors" /><div class="clear"></div>
 			</form>
 		</div>
+		<div class="about">
+			      <div id="name">
+			      </div>
+			      <br>
+			      <div id="address">
+			      </div>
+			      <br>
+			      <div id="rating">
+			      </div>
+			      <br>
+			      <div id="reviews">
+			      </div>
+			      <br>
+			      <div id="addReview">
+			      </div>
+		</div>
+		
 	</section>
 
 	<section id="facility_search" >
 		<div class="content">
 			<form id="facility_form" class="search_form" action="" method="get">
-				<div class="submit"></div><input type="text" name="search_field" class="search_field" placeholder="Search Facilities" /><div class="clear"></div>
+				<div class="submit"></div><input id="facility_search_id" type="text" name="search_field" class="search_field" placeholder="Search Facilities" /><div class="clear"></div>
 			</form>
+		</div>
+		<div class="about">
+			      <div id="fname">
+			      </div>
+			      <br>
+			      <div id="faddress">
+			      </div>
+			      <br>
+			      <div id="frating">
+			      </div>
+			      <br>
+			      <div id="freviews">
+			      </div>
+			      <br>
+			      <div id="faddReview">
+			      </div>
 		</div>
 	</section>
 
@@ -50,7 +85,6 @@
 	<section id="search_results_map">
 
 	</section>
-
 
 	<section id="review_main">
 		<div id="facility_review_1_div" class="link"></div>

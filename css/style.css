@@ -115,6 +115,13 @@ section div{
 #doctor_search .submit{
 	margin-left: 10px;
 }
+#doctor_search .about{
+	top: 180px;
+	margin-left: 10px;
+	width: 320px;
+	height: 280px; 
+	overflow: scroll;
+}
 
 
 #facility_search{
@@ -131,6 +138,14 @@ section div{
 #facility_search .submit{
 	margin-left: 10px;
 }
+#facility_search .about{
+	top: 180px;
+	margin-left: 10px;
+	width: 320px;
+	height: 280px;
+	overflow: scroll;
+}
+
 
 #treatment_search_results{
 	background: url(../images/treatment_list.jpg) left no-repeat;
@@ -160,6 +175,10 @@ section div{
 }
 
 #facility_search_results_map{
+	background: url(../images/facility_search_results.jpg) left no-repeat;
+}
+
+#search_results_about{
 	background: url(../images/facility_search_results.jpg) left no-repeat;
 }
 
