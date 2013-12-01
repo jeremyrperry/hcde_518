@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>RevealCare</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="js/jquery.min.js"></script>
+	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC83uUhHCl_0zza5YFNYaBKBeVojsqGaOc&sensor=false"></script>-->
+	<script src="js/script.js"></script>
+</head>
+<body>
+
+<div id="app">
+	<div id="user_info"><div id="back_one"></div><div id="username"></div><div id="login_link" class="login">Login</div></div>
+
+	<section id="home" >
+		<div class="content">
+			<form id="treatment_form" class="search_form"  action="" method="get">
+				<div class="submit"></div><input type="text" name="search_field" class="search_field" placeholder="Search Treatments" /><div class="clear"></div>
+				<div id="current_loc_block">
+					<input type="checkbox" name="current_loc" id="current_loc" value="true" checked="checked" />
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<section id="doctor_search" >
+		<div class="content">
+			<form id="doctor_form" class="search_form" action="" method="get">
+				<div class="submit"></div><input type="text" name="search_field" class="search_field" placeholder="Search Doctors" /><div class="clear"></div>
+			</form>
+		</div>
+	</section>
+
+	<section id="facility_search" >
+		<div class="content">
+			<form id="facility_form" class="search_form" action="" method="get">
+				<div class="submit"></div><input type="text" name="search_field" class="search_field" placeholder="Search Facilities" /><div class="clear"></div>
+			</form>
+		</div>
+	</section>
+
+	<section id="treatment_search_results">
+		<div class="acl"></div>
+		<div class="pcl"></div>
+		<div class="meniscus"></div>
+	</section>
+
+	<section id="search_results_map">
+
+	</section>
+
+
+	<section id="review_main">
+		<div id="facility_review_1_div" class="link"></div>
+		<div id="doctor_review_1_div" class="link"></div>
+	</section>
+
+	<section id="doctor_review_1" class="review_1">
+		<form id="doctor_review_1_form" class="review_form_1" action="" method="get">
+			<div class="date_field">
+				<input type="date" name="date" class="date" required />
+			</div>
+			<div class="quality buttons">
+				<input type="radio" name="quality" class="quality_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="quality" class="quality_2" value="2" />
+				<input type="radio" name="quality" class="quality_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="quality" class="quality_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="quality" class="quality_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="knowledge buttons">
+				<input type="radio" name="knowledge" class="knowledge_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="knowledge" class="knowledge_2" value="2" />
+				<input type="radio" name="knowledge" class="knowledge_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="knowledge" class="knowledge_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="knowledge" class="knowledge_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="satisfaction buttons">
+				<input type="radio" name="satisfaction" class="satisfaction_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="satisfaction" class="satisfaction_2" value="2" />
+				<input type="radio" name="satisfaction" class="satisfaction_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="satisfaction" class="satisfaction_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="satisfaction" class="satisfaction_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="service buttons">
+				<input type="radio" name="service" class="service_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="service" class="service_2" value="2" />
+				<input type="radio" name="service" class="service_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="service" class="service_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="service" class="service_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="submit"></div>
+		</form>
+	</section>
+
+
+	<section id="doctor_review_2" class="review_2">
+		<div class="overall"></div>
+		<form id="doctor_review_form_2" class="review_form_2" action="" method="get">
+			<textarea name="comments" class="comments"></textarea>
+			<div class="submit"></div>
+		</form>
+	</section>
+
+	<section id="doctor_review_thanks" class="review_thanks">
+		<div></div>
+	</section>
+
+	<section id="facility_review_1" class="review_1">
+		<form id="facility_review_1_form" class="review_form_1" action="" method="get">
+			<form id="doctor_review_1_form" action="" method="get">
+			<div class="date_field">
+				<input type="date" name="date" class="date" required />
+			</div>
+			<div class="quality buttons">
+				<input type="radio" name="quality" class="quality_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="quality" class="quality_2" value="2" />
+				<input type="radio" name="quality" class="quality_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="quality" class="quality_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="quality" class="quality_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="cleanliness buttons">
+				<input type="radio" name="cleanliness" class="cleanliness_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="cleanliness" class="cleanliness_2" value="2" />
+				<input type="radio" name="cleanliness" class="cleanliness_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="cleanliness" class="cleanliness_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="cleanliness" class="cleanliness_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="safety buttons">
+				<input type="radio" name="safety" class="safety_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="safety" class="safety_2" value="2" />
+				<input type="radio" name="safety" class="safety_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="safety" class="safety_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="safety" class="safety_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="expertise buttons">
+				<input type="radio" name="expertise" class="expertise_1" value="1" style="margin-left: 0px" />
+				<input type="radio" name="expertise" class="expertise_2" value="2" />
+				<input type="radio" name="expertise" class="expertise_3" value="3" style="margin-left: 4px" />
+				<input type="radio" name="expertise" class="expertise_4" value="4" style="margin-left: 4px" />
+				<input type="radio" name="expertise" class="expertise_5" value="5" style="margin-left: 5px" checked />
+			</div>
+			<div class="submit"></div>
+		</form>
+		</form>
+	</section>
+
+
+	<section id="facility_review_2" class="review_2">
+		<div class="overall"></div>
+		<form id="facility_review_form_2" class="review_form_2" action="" method="get">
+			<textarea name="comments" class="comments"></textarea>
+			<div class="submit"></div>
+		</form>
+	</section>
+
+	<section id="facility_review_thanks" class="review_thanks">
+		<div></div>
+	</section>
+	
+	
+	<section id="login">
+		<div id="login_div">
+		<form id="login_form" action="" method="get">
+			<input type="hidden" name="redirect" class="redirect" value="#home" />
+			<input type="email" name="email" class="email" placeholder="email" required />
+			<input type="password" name="password" class="password" placeholder="password" required /><br />
+			<div class="submit"></div>
+			<div class="register link" id="register_div"></div>
+		</form>
+		</div>
+	</section>
+
+	<section id="register">
+		<div class="login link" id="login_div"></div>
+		<div id="register_div">
+		<form id="reg_form" action="" method="get">
+			<input type="hidden" name="redirect" class="redirect" value="#home" />
+			<input type="text" name="name" class="name" placeholder="name" required />
+			<input type="text" name="gender" class="gender" placeholder="gender" />
+			<input type="email" name=" email" class="email" placeholder="email" required />
+			<input type="text" name="zip_code" class="zip_code" placeholder="zipcode" />
+			<input type="password" name="password" class="password" placeholder="password" required />
+			<input type="password" name="password_confirm" class="password_confirm" placeholder="verify password" required />
+			<div class="submit"></div>
+		</form>
+		</div>
+	</section>
+	<footer>
+		<div id="doctor_search_div" class="link"></div><div id="facility_search_div" class="link"></div><div id="home_div" class="link"></div><div id="review_main_div" class="link"></div>
+	</footer>
+</div>
+</body>
+</html>
