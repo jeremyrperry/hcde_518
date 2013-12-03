@@ -81,7 +81,6 @@ var revealCare = {
 	getLocation: function(){
 		var address = this.userInfo.lat+','+this.userInfo.lng;
 		console.log(address);
-		/*
 		this.geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var googleAddress = results[0].formatted_address.split(',');
@@ -92,22 +91,21 @@ var revealCare = {
 				 console.log("Google intended address: "+revealCare.userInfo.city+','+revealCare.userInfo.state+','+revealCare.userInfo.zip);
 			}
 			else{
-			*/
 				$.get(revealCare.webServiceUrl+'/web_services/geolocation/export?type=city_postal_by_geo&value='+address, function(d){
 					var data = jQuery.parseJSON(d);
 					revealCare.userInfo.city = data.results.city;
 					revealCare.userInfo.state = data.results.state_region;
 					revealCare.userInfo.zip = data.results.postal_code;
 				});
-			//}
-		//});
+			}
+		});
 	},
 
 	loadAboutData: function(value){
 		var arr=[];
 	    $.ajax({
 	    type:'POST',
-	    url:'aws-server/About.php?searchKey='+value,
+	    url: revealCare.reviewUrl+'About.php?searchKey='+value,
 	    success:function(res)
 	    {
 	        	arr = $.parseJSON( res );
@@ -120,7 +118,7 @@ var revealCare = {
 
 			$("#rating").text(arr[0]['Rating']['N']);
 
-			var insert = "<a href=\"aws-server/addReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
+			var insert = "<a href="+revealCare.reviewUrl+"addReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
 			
 			$("#addReview").html(insert);
 			$("#reviews").empty();
@@ -130,7 +128,7 @@ var revealCare = {
 				var reviewSearchKey = arr[0]['Reviews']['SS'][ctr];
 				$.ajax({
 	        		type:'POST',
-	        		url:'aws-server/Review.php?searchKey='+reviewSearchKey,
+	        		url: revealCare.reviewUrl+'Review.php?searchKey='+reviewSearchKey,
 	        		success:function(res)
 				{
 					reviewArr = $.parseJSON(res);
@@ -154,7 +152,7 @@ var revealCare = {
 		var arr=[];
 	    $.ajax({
 	    type:'POST',
-	    url:'aws-server/About.php?searchKey='+value,
+	    url: revealCare.reviewUrl+'About.php?searchKey='+value,
 	    success:function(res)
 	    {
 	        	arr = $.parseJSON( res );
@@ -167,7 +165,7 @@ var revealCare = {
 
 			$("#frating").text(arr[0]['Rating']['N']);
 
-			var insert = "<a href=\"aws-server/addReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
+			var insert = "<a href="+revealCare.reviewUrl+"addReview.html?name=" + encodeURIComponent(arr[0]['ID']['S']) + "\"> Add Review </a>";
 			
 			$("#faddReview").html(insert);
 			$("#freviews").empty();
@@ -177,7 +175,7 @@ var revealCare = {
 				var reviewSearchKey = arr[0]['Reviews']['SS'][ctr];
 				$.ajax({
 	        		type:'POST',
-	        		url:'aws-server/Review.php?searchKey='+reviewSearchKey,
+	        		url: revealCare.reviewUrl+'Review.php?searchKey='+reviewSearchKey,
 	        		success:function(res)
 				{
 					reviewArr = $.parseJSON(res);
@@ -220,7 +218,7 @@ var revealCare = {
 				revealCare.userInfo.state = data.results.state_region;
 				revealCare.userInfo.zip = data.results.postal_code;
 				//console.log("got by Web Services: "+revealCare.userInfo.city+','+revealCare.userInfo.state+','+revealCare.userInfo.zip);
-				revealCare.exitSplash();
+				//revealCare.exitSplash();
 			});
 		});
 		$('#distance_type').click(function(){
@@ -356,7 +354,7 @@ var revealCare = {
 			var arr=[];
 			$.ajax({
 			type:'POST',
-			url:'aws-server/DoctorAll.php',
+			url: revealCare.reviewUrl+'DoctorAll.php',
 			success:function(res)
 			{
 				   arr = $.parseJSON( res );
@@ -376,7 +374,7 @@ var revealCare = {
 			var arr=[];
 			$.ajax({
 			type:'POST',
-			url:'aws-server/FacilityAll.php',
+			url: revealCare.reviewUrl+'FacilityAll.php',
 			success:function(res)
 			{
 				   arr = $.parseJSON( res );
