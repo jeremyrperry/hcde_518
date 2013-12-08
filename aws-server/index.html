@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Health App</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+      	var arr=[];
+        $.ajax({
+        type:'POST',
+        url:'TreatmentAll.php',
+        success:function(res)
+        {
+        	arr = $.parseJSON( res );
+                $('#tags').autocomplete({
+                	source: arr,
+                        select: function(event, ui) {
+                        	console.log(ui);
+                                var url;
+                                url = "treatment.html?searchKey="+ui.item.value;
+                                console.log(url);
+                                window.location = url;
+                       	}
+             	});
+   	}
+               }).done(function(){
+                       
+                       var loading = document.getElementById('loading');
+                       $(loading).hide();
+                       });
+});
+</script>
+</head>
+
+<body>
+    
+    <div id="home">
+        <a href="index.html"/> Home </a>
+    </div>
+    <hr>
+    <div id="loading">
+        Loading..
+        <hr>
+    </div>
+    
+<div class="ui-widget">
+  	<label for="tags">Search: </label>
+ 	<input id="tags" type="text">
+</div>
+</body>
+</html>
